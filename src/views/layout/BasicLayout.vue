@@ -1,8 +1,8 @@
 <template>
   <div>
     <van-nav-bar :title="title">
-      <van-icon name="bell" slot="left" @click="handlerBell()"/>
-      <van-icon name="service-o" slot="right" @click="handlerService()"/>
+      <van-icon name="bell" size="18px" slot="left" @click="handlerBell()"/>
+      <van-icon name="service-o" size="18px" slot="right" @click="handlerService()"/>
     </van-nav-bar>
     <div class="content">
       <router-view></router-view>

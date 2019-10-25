@@ -23,7 +23,7 @@
     },
     methods: {
       login() {
-        console.log("username:", this.username, ",password:", this.password)
+        this.$router.push("/")
       }
     }
   }
@@ -42,7 +42,7 @@
     margin: 10px 0;
 
     button {
-      width: 60%;
+      width: 70%;
       border-radius: 10px;
     }
   }
