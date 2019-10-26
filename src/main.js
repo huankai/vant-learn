@@ -20,7 +20,16 @@ import {
   GridItem,
   Dialog,
   Row,
-  Col
+  Col,
+  Image,
+  RadioGroup,
+  Radio,
+  Popup,
+  Picker,
+  ActionSheet,
+  ImagePreview,
+  Uploader,
+  List
 } from "vant";
 
 Vue.config.productionTip = false
@@ -41,6 +50,15 @@ Vue.use(GridItem)
 Vue.use(Dialog)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Image)
+Vue.use(RadioGroup)
+Vue.use(Radio)
+Vue.use(Popup)
+Vue.use(Picker)
+Vue.use(ActionSheet)
+Vue.use(ImagePreview)
+Vue.use(Uploader)
+Vue.use(List)
 new Vue({
   render: h => h(App),
   router,

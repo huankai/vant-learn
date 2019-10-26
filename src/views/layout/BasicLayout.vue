@@ -61,6 +61,9 @@
 </script>
 
 <style lang="less" scoped>
+  .content {
+    background: #f5f6f8;
+  }
   .van-nav-bar {
     background: #1989fa;
 

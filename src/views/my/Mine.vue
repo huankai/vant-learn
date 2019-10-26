@@ -1,37 +1,43 @@
 <template>
   <div class="my">
-    <van-row>
-      <van-col span="8">
-        <!--        <img src="">-->
+    <van-row style="background: white;">
+      <van-col span="6" style="text-align: center">
+        <van-image
+          round
+          width="5rem"
+          height="5rem"
+          :src="$store.getters.getCurrentUserInfo.userIcon"
+        />
       </van-col>
-      <van-col span="12">
-        <van-row>
-          <van-col span="24">黄老</van-col>
-        </van-row>
-        <van-row>
-          <van-col span="24">手机号:<span>18888888888</span></van-col>
-        </van-row>
-      </van-col>
-      <van-col span="4">hhhhhhhhhh
+      <van-col span="18" class="user-info">
+        <router-link to="/userInfo">
+          <van-row>{{ this.$store.getters.getCurrentUserInfo.nickName }}</van-row>
+          <van-row>
+            <van-col span="18">手机号：{{ this.$store.getters.getCurrentUserInfo.phone }}</van-col>
+            <van-col span="6" style="text-align: right;">
+              <van-icon name="arrow" size="20px"/>
+            </van-col>
+          </van-row>
+        </router-link>
       </van-col>
     </van-row>
     <van-grid square :border="true" :column-num="3">
       <van-grid-item>
         <div class="title">账户资金</div>
-        <div class="value">109990</div>
+        <div class="value">{{ accountAmount }}</div>
       </van-grid-item>
       <van-grid-item>
         <div class="title">冻结资金</div>
-        <div class="value">0.00</div>
+        <div class="value">{{ accountUnAmount }}</div>
       </van-grid-item>
       <van-grid-item>
         <div class="title">订单佣金</div>
-        <div class="value">88.9</div>
+        <div class="value">{{ orderAmount }}</div>
       </van-grid-item>
     </van-grid>
-    <van-cell title="充值" size="large" icon="passed" is-link/>
-    <van-cell title="提现" size="large" icon="gold-coin-o" is-link/>
-    <van-cell title="银行卡" size="large" icon="idcard" is-link/>
+    <van-cell title="充值" size="large" icon="passed" @click="handlerCZ()" is-link/>
+    <van-cell title="提现" size="large" icon="gold-coin-o" @click="handlerTX()" is-link/>
+    <van-cell title="银行卡" size="large" icon="idcard" @click="handlerYHK()" is-link/>
     <van-cell title="修改密码" size="large" icon="setting-o" to="/updatepassword" is-link/>
     <div class="logout-btn">
       <van-button type="info" size="normal" @click="handlerLogout()">安&nbsp;全&nbsp;退&nbsp;出</van-button>
@@ -42,7 +48,23 @@
 <script>
   export default {
     name: "Mine",
+    data() {
+      return {
+        accountAmount: 1099.89,
+        accountUnAmount: 0,
+        orderAmount: 88,
+      }
+    },
     methods: {
+      handlerCZ() {
+        this.$toast("充值功能正在开发中...")
+      },
+      handlerTX() {
+        this.$toast("提现功能正在开发中...")
+      },
+      handlerYHK() {
+        this.$toast("银行卡功能正在开发中...")
+      },
       handlerLogout() {
         this.$dialog.confirm({
           title: '退出提示',
@@ -57,10 +79,6 @@
 </script>
 
 <style lang="less" scoped>
-
-  .my {
-    background: #f5f6f8;
-  }
 
   .van-grid {
     margin: 10px 0;
@@ -85,6 +103,19 @@
     }
   }
 
+  .user-info {
+    height: 5rem;
+
+    a {
+      color: black;
+    }
+
+    .van-row {
+      height: 2.5rem;
+      margin: 5px;
+    }
+  }
+
   .logout-btn {
     margin: 10px 0;
     text-align: center;
@@ -95,6 +126,7 @@
       border-radius: 10px;
       font-size: 18px;
       font-weight: bolder;
+      margin: 10px 0;
     }
   }
 </style>
