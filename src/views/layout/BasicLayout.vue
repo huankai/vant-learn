@@ -1,13 +1,13 @@
 <template>
   <div>
-    <van-nav-bar :title="title">
-      <van-icon name="bell" size="18px" slot="left" @click="handlerBell()"/>
+    <van-nav-bar :title="$store.getters.getCurrentTabBar.title" fixed>
+      <van-icon name="bell" size="18px" slot="left" @click="$router.push('/notice')"/>
       <van-icon name="service-o" size="18px" slot="right" @click="handlerService()"/>
     </van-nav-bar>
     <div class="content">
       <router-view></router-view>
     </div>
-    <van-tabbar v-model="active">
+    <van-tabbar v-model="$store.getters.getCurrentTabBar.index">
       <van-tabbar-item v-for="(item,index) in tabBarItem" @click="tabBarChangeHandler(index,item)" :key="index"
                        :icon="item.icon">{{item.text}}
       </van-tabbar-item>
@@ -16,38 +16,18 @@
 </template>
 
 <script>
-  const tabBarItem = [
-    {
-      icon: 'gold-coin',
-      text: '订单中心',
-      link: "/orderCenter"
-    }, {
-      icon: 'bars',
-      text: '订单记录',
-      link: "/order/list"
-    }, {
-      icon: 'friends',
-      text: '代理中心',
-      link: "/proxy"
-    }, {
-      icon: 'manager',
-      text: '个人中心',
-      link: "/my"
-    }
-  ]
+  import {updateTabBar} from "@/store/mutations-types";
+
   export default {
     name: "BasicLayout",
     data() {
       return {
-        tabBarItem,
-        active: 3,
-        title: tabBarItem[3].text
+        tabBarItem: this.$store.getters.getTabBarList,
       }
     },
     methods: {
       tabBarChangeHandler(index, current) {
-        this.active = index;
-        this.title = current.text;
+        this.$store.commit(updateTabBar, {title: current.text, index});
         this.$router.replace(current.link);
       },
       handlerBell() {
@@ -63,9 +43,11 @@
 <style lang="less" scoped>
   .content {
     background: #f5f6f8;
+    margin: 48px 0;
   }
+
   .van-nav-bar {
-    background: #1989fa;
+    background: linear-gradient(#1989fa, #1989D8);
 
     i {
       color: #fff !important;

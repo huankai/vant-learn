@@ -6,7 +6,7 @@ import Login from "@/router/login";
 import Base from "@/router/base";
 import Blank from "@/router/blank";
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -15,3 +15,9 @@ export default new VueRouter({
     ...Blank.name
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  next();
+})
+
+export default router;

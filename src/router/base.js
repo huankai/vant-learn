@@ -3,8 +3,8 @@ import BasicLayout from "@/views/layout/BasicLayout";
 export default {
   name: [{
     path: "/",
-    component: BasicLayout,
     redirect: '/my',
+    component: BasicLayout,
     children: [
       {
         path: 'my',

@@ -1,3 +1,21 @@
 body {
     font-family: 'PingFang SC', 'Helvetica Neue', 'Hiragino Sans GB', 'Noto Sans', STHeiti, Tahoma, 'Arial', 'Microsoft YaHei', 'simsun', 'sans-serif';
 }
+
+.center-btn {
+    margin: 10px 0;
+    text-align: center;
+    background: white;
+}
+
+a {
+    color: #1989fa;
+}
+
+.center-btn button {
+    width: 70%;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+    margin: 10px 0;
+}

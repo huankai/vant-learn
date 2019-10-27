@@ -21,7 +21,7 @@
         </router-link>
       </van-col>
     </van-row>
-    <van-grid square :border="true" :column-num="3">
+    <van-grid square :border="false" :column-num="3">
       <van-grid-item>
         <div class="title">账户资金</div>
         <div class="value">{{ accountAmount }}</div>
@@ -35,13 +35,11 @@
         <div class="value">{{ orderAmount }}</div>
       </van-grid-item>
     </van-grid>
-    <van-cell title="充值" size="large" icon="passed" @click="handlerCZ()" is-link/>
+    <van-cell title="充值" size="large" icon="passed" to="/recharge" is-link/>
     <van-cell title="提现" size="large" icon="gold-coin-o" @click="handlerTX()" is-link/>
-    <van-cell title="银行卡" size="large" icon="idcard" @click="handlerYHK()" is-link/>
-    <van-cell title="修改密码" size="large" icon="setting-o" to="/updatepassword" is-link/>
-    <div class="logout-btn">
-      <van-button type="info" size="normal" @click="handlerLogout()">安&nbsp;全&nbsp;退&nbsp;出</van-button>
-    </div>
+    <van-cell title="银行卡" size="large" icon="idcard" to="/bank" is-link/>
+
+
   </div>
 </template>
 
@@ -56,24 +54,10 @@
       }
     },
     methods: {
-      handlerCZ() {
-        this.$toast("充值功能正在开发中...")
-      },
       handlerTX() {
         this.$toast("提现功能正在开发中...")
-      },
-      handlerYHK() {
-        this.$toast("银行卡功能正在开发中...")
-      },
-      handlerLogout() {
-        this.$dialog.confirm({
-          title: '退出提示',
-          message: '确认退出吗？'
-        }).then(() => {
-          this.$router.push("/user/login")
-        }).catch(() => {
-        })
       }
+
     }
   }
 </script>
@@ -116,17 +100,4 @@
     }
   }
 
-  .logout-btn {
-    margin: 10px 0;
-    text-align: center;
-    background: white;
-
-    button {
-      width: 70%;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bolder;
-      margin: 10px 0;
-    }
-  }
 </style>

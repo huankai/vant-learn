@@ -10,6 +10,14 @@ export default {
         path: 'login',
         name: 'login',
         component: () => import('@/views/login/Login')
+      },{
+        path: 'register',
+        name: 'Register',
+        component: () => import('@/views/login/Register')
+      },{
+        path: 'forgetPassword',
+        name: 'ForgetPassword',
+        component: () => import('@/views/login/ForgetPassword')
       },
     ]
   }]

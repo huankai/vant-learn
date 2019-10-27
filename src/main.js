@@ -29,8 +29,17 @@ import {
   ActionSheet,
   ImagePreview,
   Uploader,
-  List
+  List,
+  NumberKeyboard,
+  Search,
+  NoticeBar,
+  Stepper,
+  Tab,
+  Tabs,
+  DropdownMenu,
+  DropdownItem
 } from "vant";
+
 
 Vue.config.productionTip = false
 
@@ -59,6 +68,19 @@ Vue.use(ActionSheet)
 Vue.use(ImagePreview)
 Vue.use(Uploader)
 Vue.use(List)
+Vue.use(NumberKeyboard)
+Vue.use(Search)
+Vue.use(NoticeBar)
+Vue.use(Stepper)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+
+Toast.setDefaultOptions({
+  duration: 1000 //设置展示时长(ms)，值为 0 时，toast 不会消失
+})
+Vue.prototype.$toast = Toast
 new Vue({
   render: h => h(App),
   router,

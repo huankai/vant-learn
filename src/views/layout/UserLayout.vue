@@ -16,6 +16,6 @@
     height: 100%;
     background: url("../../assets/images/login_bg.jpg");
     text-align: center;
-    padding: 200px 10px 100%;
+    padding: 195px 10px;
   }
 </style>

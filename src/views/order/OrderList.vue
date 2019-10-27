@@ -1,87 +1,49 @@
 <template>
-  <div>
+  <div class="order">
+    <!--    <van-search placeholder="请输入搜索关键词" show-action/>-->
+    <van-tabs @click="handlerClick">
+      <van-tab title="全部"></van-tab>
+      <van-tab title="待审核" name="1"></van-tab>
+      <van-tab title="未通过" name="2"></van-tab>
+      <van-tab title="已完成" name="3"></van-tab>
+    </van-tabs>
     <van-list
       v-model="loading"
       :finished="finished"
       finished-text="没有更多了"
       @load="onLoad">
       <van-row v-for="item in list" :key="item.orderCode">
-<!--        <van-col span="12">订单号: {{ item.orderCode }}</van-col>-->
-<!--        <van-col span="12">订单金额: {{ item.amount }}</van-col>-->
-<!--        <van-col span="16">交易时间: {{ item.transactionDate }}</van-col>-->
-<!--        <van-col span="8">佣金: {{ item.commissionAmount }}</van-col>-->
+        <van-col span="18"><span class="title">订单号:</span> {{ item.orderCode }}</van-col>
+        <van-col span="4"><span class="status">交易成功</span></van-col>
+        <van-col span="10"><span class="title">订单金额: </span><span class="price">{{ item.amount }}</span></van-col>
+        <van-col span="8"><span class="title">佣金: </span><span class="price">{{ item.commissionAmount }}</span>
+        </van-col>
+        <van-col span="24"><span class="title">交易时间:</span>{{ item.transactionDate }}</van-col>
       </van-row>
     </van-list>
   </div>
 </template>
 
 <script>
-  const list = [{
-    orderCode: '1',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '2',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '3',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '4',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '5',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '6',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '7',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '8',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '9',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }, {
-    orderCode: '10',
-    amount: 140,
-    commissionAmount: 0,
-    transactionDate: '2019-10-26 10:10:10'
-  }];
   export default {
     name: "OrderList",
     data() {
       return {
         loading: false,
         finished: false,
-        list
+        list: []
       }
     },
     methods: {
+      handlerClick(name, title) {
+        this.$toast.success(`当前选中 ${name} ,标题: ${title}`)
+      },
       onLoad() {
+        const size = this.list.length;
         setTimeout(() => {
-          for (let i = this.list.length + 1; i <= 10; i++) {
+          for (let i = 0; i < 10; i++) {
             this.list.push({
-              orderCode: i,
+              orderCode: i + size,
               amount: 140,
               commissionAmount: 0,
               transactionDate: '2019-10-26 10:10:10'
@@ -99,6 +61,34 @@
   }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .order {
+    .van-row {
+      background: white;
+      margin: 10px 0;
+      overflow-x: hidden;
+
+      .van-col {
+        line-height: 30px;
+        margin-left: 10px;
+
+        .status {
+          color: red;
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+        .title {
+          color: #9c9c9c;
+        }
+
+        .price {
+          color: red;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 
 </style>
